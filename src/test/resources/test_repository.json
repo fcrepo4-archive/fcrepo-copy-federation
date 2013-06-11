@@ -1,0 +1,37 @@
+{
+    "name" : "repo",
+    "jndiName" : "",
+    "workspaces" : {
+        "predefined" : ["default"],
+        "default" : "default",
+        "allowCreation" : true
+    },
+  "externalSources" : {
+    "targetDirectory" : {
+      "classname" : "org.fcrepo.federation.bagit.BagItConnector",
+      "directoryPath" : "target/test-classes/test-objects",
+      "readonly" : false,
+      "cacheTtlSeconds" : 0,
+      "projections" : [ "default:/federated => /" ]
+     }
+    },
+    "security" : {
+        "anonymous" : {
+            "roles" : ["readonly","readwrite","admin"],
+            "useOnFailedLogin" : false
+        },
+        "providers" : [
+            { "classname" : "servlet" }
+        ]
+    },
+    "sequencing" : {
+        "removeDerivedContentWithOriginal" : false,
+        "sequencers" : {
+            "Referenced Node Copier Sequencer" : {
+                "classname" : "org.fcrepo.sequencer.copy.NodeCopySequencer",
+                "pathExpressions" : [ "default:/federated/(*)/@jcr:primaryType => default:/objects/\$1" ]
+            }
+        }
+    },
+	"node-types" : ["bagit-node-types.cnd"]
+}

@@ -9,20 +9,17 @@
   <artifactId>fcrepo-copy-federation</artifactId>
   <name>fcrepo-copy-federation</name>
   <description>Various approaches to copying projected nodes to internal nodes in regular ModeShape storage.</description>
-  <properties>
-    <modeshape.version>3.4-SNAPSHOT</modeshape.version>
-    <resteasy.version>2.3.5.Final</resteasy.version>
-  </properties>
   <dependencies>
-    <!-- Apache Velocity -->
     <!-- test gear -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
+      <scope>test</scope>
     </dependency>
     <!-- This dependency is for compile-time: it keeps this module independent 
       of any given choice of JAX-RS implementation. It must be _after_ the test 
